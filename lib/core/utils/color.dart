@@ -7,5 +7,9 @@ class AppColors {
   static const Color textDark = Color(0xFF1A1A1A); // لون النصوص الأساسية
   static const Color accentGreen = Color(0xFF4CAF50); // لون الـ Completed أو الحضور
   static const Color accentRed = Color(0xFFBA1A1A); // لون الـ Absent أو الخطأ
-static const Color textSubtitle = Color(0xFF727784); // لون الـ Late أو التأخير
+static const Color textSubtitle = Color(0xFF727784);
+static const Color activeBlue = Color(0xff004494);
+ static const Color inactiveGreyBg = Color(0xffE2E5ED);
+
+
 }

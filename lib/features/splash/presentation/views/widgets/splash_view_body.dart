@@ -46,10 +46,7 @@ class SplashViewBody extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 70.h),
-              Divideritems(),
-
-              SizedBox(height: 70.h),
+              Expanded(flex: 2, child: SizedBox(height: 70.h)),
 
               BounceInUp(
                 delay: const Duration(milliseconds: 1000),
@@ -60,7 +57,7 @@ class SplashViewBody extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 20.h),
+              Expanded(flex: 1, child: SizedBox(height: 30.h)),
             ],
           ),
         ),

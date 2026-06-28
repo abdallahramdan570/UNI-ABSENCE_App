@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Divideritems extends StatelessWidget {
   const Divideritems({
-    super.key,
+    super.key, required int thickness, required Color color,
   });
 
   @override

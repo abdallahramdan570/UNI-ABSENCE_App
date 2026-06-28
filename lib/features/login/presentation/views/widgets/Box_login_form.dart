@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_absence/core/utils/styles.dart';
-import 'package:uni_absence/core/validator/app_validators.dart';
+import 'package:uni_absence/core/widgets/validator/app_validators.dart';
 import 'package:uni_absence/core/widgets/custom_Buttom.dart';
 import 'package:uni_absence/features/login/presentation/views/widgets/Login_Form_section.dart';
 import 'package:uni_absence/features/login/presentation/views/widgets/SecurityBanner.dart';
