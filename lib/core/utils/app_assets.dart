@@ -10,6 +10,10 @@ class Assets {
   /// assets/images/Icon_no_accass.svg
   static const String assetsImagesIconNoAccass = "assets/images/Icon_no_accass.svg";
 
+  /// Assets for assetsImagesImgesProfile
+  /// assets/images/imges_profile.svg
+  static const String assetsImagesImgesProfile = "assets/images/imges_profile.svg";
+
   /// Assets for assetsImagesLogo
   /// assets/images/logo.png
   static const String assetsImagesLogo = "assets/images/logo.png";
