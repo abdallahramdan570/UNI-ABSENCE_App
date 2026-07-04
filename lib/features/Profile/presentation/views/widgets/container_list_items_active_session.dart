@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uni_absence/features/Profile/presentation/views/profile_views.dart';
+// removed unused import
 import 'package:uni_absence/features/Profile/presentation/views/widgets/list_tile_items.dart';
 
 class ContainerListItemsActiveSession extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:uni_absence/features/ExamDetails/data/model/exam_student_model.dart';
+// removed unused import
 
 // class ExamDetailsModel {
 //   final String courseName;

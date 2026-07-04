@@ -5,9 +5,11 @@ import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
 import 'package:uni_absence/core/widgets/navigation/custom_bottom_nav_bar.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/attendance_records_View_body.dart';
+import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
 
 class AttendanceRecordsViews extends StatelessWidget {
-  const AttendanceRecordsViews({super.key});
+  const AttendanceRecordsViews({super.key, required this.examData});
+  final ExamModel examData;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class AttendanceRecordsViews extends StatelessWidget {
           ),
           
         ),
-        body: const AttendanceRecordsViewBody(),
+        body: AttendanceRecordsViewBody(examData: examData),
 
         bottomNavigationBar: CustomBottomNavBar(currentIndex: 1),
       ),

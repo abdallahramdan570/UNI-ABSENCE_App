@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:uni_absence/features/ExamDetails/data/model/exam_student_model.dart';
-import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/exam_details_views_body.dart';
+import 'package:uni_absence/features/ExamDetails/domain/entities/exam_record_entity.dart';
 
 class StudentTableRow extends StatelessWidget {
   const StudentTableRow({super.key, required this.student});
 
-  final ExamStudentModel student;
+  final ExamRecordEntity student;
+
 
   @override
   Widget build(BuildContext context) {

@@ -40,10 +40,10 @@ class ExamReportInfoCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
-                  "Computer Science - HCI ",
-                  style: TextStyle(
+                  courseName,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryBlue,

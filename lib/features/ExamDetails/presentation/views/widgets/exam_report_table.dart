@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/exam_details_views_body.dart';
+import 'package:uni_absence/features/ExamDetails/domain/entities/exam_record_entity.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/student_table_row.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/table_header.dart';
 
@@ -10,7 +10,8 @@ class ExamReportTable extends StatelessWidget {
     required this.students,
   });
 
-  final List students;
+  final List<ExamRecordEntity> students;
+
 
   @override
   Widget build(BuildContext context) {

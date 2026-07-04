@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:uni_absence/core/utils/app_assets.dart';
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
 import 'package:uni_absence/core/widgets/custom_appbar.dart';
-import 'package:uni_absence/core/widgets/logo_items.dart';
+// removed unused imports
 import 'package:uni_absence/features/login/presentation/views/widgets/Box_login_form.dart';
-import 'package:uni_absence/features/login/presentation/views/widgets/Login_Form_section.dart';
 import 'package:uni_absence/features/login/presentation/views/widgets/Logo_Item_login.dart';
 
 class LoginView extends StatelessWidget {
@@ -16,10 +13,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: CustomAppBar(),
-      ),
+      appBar: AppBar(automaticallyImplyLeading: false, title: CustomAppBar()),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

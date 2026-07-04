@@ -3,9 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/download_export_report_file.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/exam_report_info_card.dart';
+import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/list_students_data.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/scroll_section.dart';
+import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uni_absence/features/ExamDetails/presentation/cubit/exam_record_cubit.dart';
+import 'package:uni_absence/features/ExamDetails/presentation/cubit/exam_record_state.dart';
+
 class ExamDetailsViewsBody extends StatelessWidget {
-  const ExamDetailsViewsBody({super.key});
+  const ExamDetailsViewsBody({super.key, required this.examData});
+
+  final ExamModel examData;
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +23,31 @@ class ExamDetailsViewsBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ExamReportInfoCard(
-            courseName: "Computer Science - HCI",
-            examDate: DateTime(2026, 6, 15),
-            examTime: "10:00 AM - 12:00 PM ",
+            courseName: examData.examName,
+            // Assuming examDate is a String in format YYYY-MM-DD from the API
+            examDate: DateTime.tryParse(examData.examDate) ?? DateTime.now(),
+            examTime: examData.examTime,
           ),
           SizedBox(height: 20.h),
-          ScrollSection(),
+          const ScrollSection(),
           SizedBox(height: 20.h),
-          const DownloadExportReportFile(),
+          // Export button will use loaded records from ExamRecordCubit
+          BlocBuilder<ExamRecordCubit, ExamRecordState>(
+            builder: (context, state) {
+              if (state is ExamRecordLoaded) {
+                return DownloadExportReportFile(
+                  examName: examData.examName,
+                  studentsList: state.records,
+                );
+              }
+
+              // Default to disabled button while loading or on error
+              return DownloadExportReportFile(
+                examName: examData.examName,
+                studentsList: [],
+              );
+            },
+          ),
           SizedBox(height: 20.h),
         ],
       ),

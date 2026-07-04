@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uni_absence/core/utils/color.dart';
-import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/attendance_records_View_body.dart';
+// removed unused import
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/attendance_records_total_items.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/data_list.dart';
 
@@ -30,7 +29,7 @@ class AttendanceStatsSection extends StatelessWidget {
             count: studentsList.where((s) => s.attended).length,
           ),
         ),
-        SizedBox(width: 1.w), 
+        SizedBox(width: 1.w),
         Expanded(
           child: AttendanceRecordsTotalItems(
             icons: Icons.cancel,

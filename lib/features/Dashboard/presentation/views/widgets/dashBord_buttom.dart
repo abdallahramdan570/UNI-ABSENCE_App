@@ -5,9 +5,12 @@ import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
 
+import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
+
 class DashBordButtom extends StatelessWidget {
-  const DashBordButtom({super.key, required this.isCompleted});
+  const DashBordButtom({super.key, required this.isCompleted, required this.examData});
   final bool isCompleted; // حالة الامتحان (مكتمل أو غير مكتمل)
+  final ExamModel examData;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,9 @@ class DashBordButtom extends StatelessWidget {
 
         onPressed: () {
           if (isCompleted) {
-            GoRouter.of(context).push(AppPagesName.kattendanceView);
+            GoRouter.of(context).push(AppPagesName.kattendanceView, extra: examData);
           } else {
-       GoRouter.of(context).push(AppPagesName.kexamDetailsView);
+            GoRouter.of(context).push(AppPagesName.kexamDetailsView, extra: examData);
 
             // الأكشن الخاص بـ Prepare Attendance للامتحانات القادمة
           }

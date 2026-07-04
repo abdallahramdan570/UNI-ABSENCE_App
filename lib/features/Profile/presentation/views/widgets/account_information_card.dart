@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
-import 'package:uni_absence/features/Profile/presentation/views/profile_views.dart';
+// removed unused import
 import 'package:uni_absence/features/Profile/presentation/views/widgets/list_tile_items.dart';
 
 class AccountInformationCard extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/list_students_data.dart' as course;
+// removed unused import
 import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/locked_subject_item.dart';
 
@@ -14,11 +14,9 @@ class SubmissionSummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final totalStudents = course.students.length;
 
-final absentStudents =
-    course.students.where((s) => !s.attended).toList();
+    final absentStudents = course.students.where((s) => !s.attended).toList();
 
-final presentStudents =
-    course.students.where((s) => s.attended).length;
+    final presentStudents = course.students.where((s) => s.attended).length;
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
@@ -51,86 +49,77 @@ final presentStudents =
             ],
           ),
           SizedBox(height: 12.h),
-          const Divider(
-            
-            thickness: 1.5,
-          ),
+          const Divider(thickness: 1.5),
           SizedBox(height: 8.h),
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    Text(
-      'Total Students',
-      style: TextStyle(
-        color: Colors.grey[900],
-        fontSize: 15.sp,
-        fontWeight: FontWeight.w700,
-      ),
-    ),
-    Text(
-      totalStudents.toString(),
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  ],
-),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total Students',
+                style: TextStyle(
+                  color: Colors.grey[900],
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                totalStudents.toString(),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
 
-SizedBox(height: 12.h),
+          SizedBox(height: 12.h),
 
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    const Text(
-      'Present Students',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    Text(
-      presentStudents.toString(),
-      style: const TextStyle(
-        color: Colors.green,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  ],
-),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Present Students',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                presentStudents.toString(),
+                style: const TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
 
-SizedBox(height: 12.h),
+          SizedBox(height: 12.h),
 
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    const Text(
-      'Absent Students',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    Text(
-      absentStudents.length.toString(),
-      style: const TextStyle(
-        color: Colors.red,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  ],
-),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Absent Students',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                absentStudents.length.toString(),
+                style: const TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
 
-SizedBox(height: 20.h),
+          SizedBox(height: 20.h),
 
-LockedSubjectItem(
-  subjectName: course.courseName,
-  absentStudents: absentStudents.isEmpty
-      ? "No absent students"
-      : absentStudents
-            .map((student) => student.name)
-            .join(', '),
-  lockTime: course.lockTime ?? '',
-),
+          LockedSubjectItem(
+            subjectName: course.courseName,
+            absentStudents: absentStudents.isEmpty
+                ? "No absent students"
+                : absentStudents.map((student) => student.name).join(', '),
+            lockTime: course.lockTime ?? '',
+          ),
         ],
       ),
     );

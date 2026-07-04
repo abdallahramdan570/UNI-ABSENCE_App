@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uni_absence/features/Dashboard/presentation/cubit/exam_cubit.dart';
 
 class SelectDataSection extends StatefulWidget {
   const SelectDataSection({super.key});
@@ -12,6 +14,21 @@ class SelectDataSection extends StatefulWidget {
 
 class _SelectDataSectionState extends State<SelectDataSection> {
   DateTime _selectedDate = DateTime(2026, 06, 24); // التاريخ الافتراضي بناءً على الصورة
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch initial data after widget is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _fetchExams(_selectedDate);
+    });
+  }
+
+  void _fetchExams(DateTime date) {
+    // API expects format like 2026/7/10
+    final String formattedDate = '${date.year}/${date.month}/${date.day}';
+    context.read<ExamCubit>().fetchExamsByDate(formattedDate);
+  }
 
   // دالة لإظهار الـ Date Picker الخاص بـ Flutter عند الضغط
   Future<void> _selectDate(BuildContext context) async {
@@ -25,6 +42,7 @@ class _SelectDataSectionState extends State<SelectDataSection> {
       setState(() {
         _selectedDate = picked;
       });
+      _fetchExams(picked);
     }
   }
 

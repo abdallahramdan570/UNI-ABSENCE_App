@@ -51,7 +51,7 @@ class ExamCard extends StatelessWidget {
               isCompleted: isCompleted,
             ),
             SizedBox(height: 25.h),
-            DashBordButtom(isCompleted: isCompleted),
+            DashBordButtom(isCompleted: isCompleted, examData: examData),
 
 
           ],

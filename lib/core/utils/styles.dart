@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// removed unused import
 import 'package:uni_absence/core/utils/color.dart';
 
 abstract class AppStyles {
@@ -22,14 +22,13 @@ abstract class AppStyles {
     fontWeight: FontWeight.w600,
     fontSize: 12,
 
-  letterSpacing: 2,
+    letterSpacing: 2,
   );
 
-static const mediumRegular15 = TextStyle(
+  static const mediumRegular15 = TextStyle(
     fontFamily: 'Inter',
     fontWeight: FontWeight.w400,
     fontSize: 15,
-  
   );
 
   static const mediumSemiBold13 = TextStyle(

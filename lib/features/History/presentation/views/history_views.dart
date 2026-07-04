@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_absence/core/routing/app_routes.dart';
 import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
-import 'package:uni_absence/core/widgets/custom_Buttom.dart';
 import 'package:uni_absence/core/widgets/navigation/custom_bottom_nav_bar.dart';
 import 'package:uni_absence/features/ExamDetails/data/model/exam_student_model.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/list_students_data.dart';
 import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
-import 'package:uni_absence/features/History/presentation/views/widgets/review_card.dart';
+// removed unused imports
 
 class HistoryViews extends StatelessWidget {
   const HistoryViews({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final course = CourseAttendanceModel(
-  courseName: "Human Computer Interaction",
-  section: "Section A",
-  students: students,
-  lockTime: "June 21, 2026 10:30 AM",
-);
+      courseName: "Human Computer Interaction",
+      section: "Section A",
+      students: students,
+      lockTime: "June 21, 2026 10:30 AM",
+    );
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -30,10 +27,9 @@ class HistoryViews extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-          GoRouter.of(context).push(
-      AppPagesName.ksubmissionStatusView,
-      extra: course,
-    );
+            GoRouter.of(
+              context,
+            ).push(AppPagesName.ksubmissionStatusView, extra: course);
           },
         ),
         title: Text(
@@ -51,14 +47,11 @@ class HistoryViews extends StatelessWidget {
 }
 
 class FlaggedStudentsCard extends StatelessWidget {
- const  FlaggedStudentsCard({super.key, required this.students});
-final List<ExamStudentModel> students;
+  const FlaggedStudentsCard({super.key, required this.students});
+  final List<ExamStudentModel> students;
   @override
   Widget build(BuildContext context) {
- final absentStudentsList =
-        students
-            .where((e) => !e.attended)
-            .toList();
+    final absentStudentsList = students.where((e) => !e.attended).toList();
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(

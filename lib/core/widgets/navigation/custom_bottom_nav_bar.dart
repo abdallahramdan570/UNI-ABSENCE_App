@@ -1,7 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+// removed unused import
 import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/core/widgets/navigation/bottom_nav_item.dart';
 
@@ -33,12 +31,12 @@ class CustomBottomNavBar extends StatelessWidget {
               route: AppPagesName.kdashboardView,
               isSelected: currentIndex == 0,
             ),
-            CustomNavItem(
-              icon: Icons.how_to_reg_outlined,
-              title: 'Attendance',
-              route: AppPagesName.kattendanceView,
-              isSelected: currentIndex == 1,
-            ),
+            // CustomNavItem(
+            //   icon: Icons.how_to_reg_outlined,
+            //   title: 'Attendance',
+            //   route: AppPagesName.kattendanceView,
+            //   isSelected: currentIndex == 1,
+            // ),
             CustomNavItem(
               icon: Icons.history,
               title: 'History',

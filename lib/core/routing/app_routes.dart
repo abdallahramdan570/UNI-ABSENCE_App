@@ -11,6 +11,8 @@ import 'package:uni_absence/features/VerifyIdentity/presentation/views/verify_id
 import 'package:uni_absence/features/login/presentation/views/login_view.dart';
 import 'package:uni_absence/features/splash/presentation/views/splash_views.dart';
 
+import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
+
 abstract class AppRoutes {
   static final GoRouter routes = GoRouter(
     routes: [
@@ -23,9 +25,12 @@ abstract class AppRoutes {
       GoRoute(path:AppPagesName.kdashboardView ,
         builder: (context, state) => const DashboardViews(),
         ),
-    GoRoute(path:AppPagesName.kattendanceView ,
-        builder: (context, state) => const AttendanceRecordsViews(),
-        ),
+    // GoRoute(path:AppPagesName.kattendanceView ,
+    //     builder: (context, state) {
+    //       final examData = state.extra as ExamModel;
+    //       return AttendanceRecordsViews(examData: examData);
+    //     },
+    //     ),
         GoRoute(path:AppPagesName.khistoryView ,
         builder: (context, state) => const HistoryViews(),
 
@@ -34,7 +39,10 @@ GoRoute(path:AppPagesName.kprofileView ,
         builder: (context, state) => const ProfileViews(),
         ),
     GoRoute(path:AppPagesName.kexamDetailsView ,
-        builder: (context, state) => const ExamDetailsViews(),
+        builder: (context, state) {
+          final examData = state.extra as ExamModel;
+          return ExamDetailsViews(examData: examData);
+        },
         ),
       GoRoute(
   path: AppPagesName.ksubmissionStatusView,

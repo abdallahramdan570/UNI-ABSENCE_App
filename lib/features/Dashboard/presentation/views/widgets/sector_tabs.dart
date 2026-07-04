@@ -7,6 +7,9 @@ import 'package:uni_absence/features/Dashboard/presentation/views/widgets/attend
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/divider_items.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/exam_card.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/text_exam.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uni_absence/features/Dashboard/presentation/cubit/exam_cubit.dart';
+import 'package:uni_absence/features/Dashboard/presentation/cubit/exam_state.dart';
 
 class SectorTabsSection extends StatefulWidget {
   SectorTabsSection({super.key});
@@ -18,45 +21,8 @@ class SectorTabsSection extends StatefulWidget {
 class _SectorTabsSectionState extends State<SectorTabsSection> {
   int selectedSector = 0;
 
-  final sector1Exams = [
-    ExamModel(
-      examName: 'Computer Science - HCI Exam',
-      totalStudents: 50,
-      currentStudents: 50,
-      examTime: '10:00 AM - 12:00 PM',
-      status: 'Completed',
-    ),
-    ExamModel(
-      examName: 'Database Systems',
-      totalStudents: 60,
-      currentStudents: 40,
-      examTime: '01:00 PM - 03:00 PM',
-      status: 'Pending',
-    ),
-  ];
-
-  final sector2Exams = [
-    ExamModel(
-      examName: 'Calculus Midterm',
-      totalStudents: 40,
-      currentStudents: 15,
-      examTime: '09:00 AM - 11:00 AM',
-      status: 'Completed',
-    ),
-    ExamModel(
-      examName: 'Physics Final',
-      totalStudents: 70,
-      currentStudents: 70,
-      examTime: '02:00 PM - 04:00 PM',
-      status: 'Pending',
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-    List<ExamModel> activeExams = selectedSector == 0
-        ? sector1Exams
-        : sector2Exams;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -127,15 +93,35 @@ class _SectorTabsSectionState extends State<SectorTabsSection> {
           SizedBox(height: 10.h),
           TextExam(selectedSector: selectedSector),
           SizedBox(height: 10.h),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: activeExams.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
-                child: ExamCard(examData: activeExams[index]),
-              );
+          BlocBuilder<ExamCubit, ExamState>(
+            builder: (context, state) {
+              if (state is ExamLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is ExamError) {
+                return Center(child: Text(state.message));
+              } else if (state is ExamLoaded) {
+                // Filter by sectorId (assuming selectedSector 0 = sectorId 1, selectedSector 1 = sectorId 2)
+                final activeExams = state.exams
+                    .where((exam) => exam.sectorId == selectedSector + 1)
+                    .toList();
+
+                if (activeExams.isEmpty) {
+                  return const Center(child: Text('No exams found for this sector.'));
+                }
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: activeExams.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 6.0),
+                      child: ExamCard(examData: activeExams[index] as ExamModel), // Using ExamModel for compatibility with ExamCard
+                    );
+                  },
+                );
+              }
+              return const SizedBox.shrink();
             },
           ),
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_absence/core/utils/color.dart';
-import 'package:uni_absence/core/utils/styles.dart';
+// removed unused import
 import 'package:uni_absence/features/VerifyIdentity/presentation/views/widgets/verify_identity_view_body.dart';
 
 class VerifyIdentityView extends StatelessWidget {
@@ -18,14 +18,18 @@ class VerifyIdentityView extends StatelessWidget {
         ),
         title: const Text(
           'Verify Identity',
-          style: TextStyle(color:AppColors.primaryBlue, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(
+            color: AppColors.primaryBlue,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
         centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline, color: Colors.grey),
             onPressed: () {},
-          )
+          ),
         ],
       ),
 

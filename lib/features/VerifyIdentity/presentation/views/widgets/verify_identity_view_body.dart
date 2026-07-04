@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:uni_absence/core/utils/app_assets.dart';
+// removed unused imports
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/features/VerifyIdentity/presentation/views/widgets/face_recognition_error_header.dart';
 import 'package:uni_absence/features/VerifyIdentity/presentation/views/widgets/student_profile_card.dart';
@@ -23,16 +21,17 @@ class VerifyIdentityViewbody extends StatelessWidget {
             const WarningHeader(),
             SizedBox(height: 5.h),
             const FaceRecognitionErrorHeader(),
-         
+
             SizedBox(height: 20.h),
             PinBoxesRow(pinLength: 0),
             SizedBox(height: 20.h),
-            CustomNumKeypad(onKeyPressed: (value) {
-              
-              // هنا يمكنك التعامل مع الضغط على الأزرار
-              print('Pressed: $value');
-            }),
-               SizedBox(height: 10.h),
+            CustomNumKeypad(
+              onKeyPressed: (value) {
+                // هنا يمكنك التعامل مع الضغط على الأزرار
+                print('Pressed: $value');
+              },
+            ),
+            SizedBox(height: 10.h),
             CustomVerifyIdentityButton(),
             SizedBox(height: 20.h),
           ],
@@ -61,7 +60,9 @@ class PinBoxesRow extends StatelessWidget {
           width: 48.w,
           height: 54.h,
           decoration: BoxDecoration(
-            color: isFilled ? const Color(0xff004494).withOpacity(0.05) : const Color(0xffF1F5F9),
+            color: isFilled
+                ? const Color(0xff004494).withValues(alpha: 0.05)
+                : const Color(0xffF1F5F9),
             borderRadius: BorderRadius.circular(10.r),
             border: Border.all(
               color: isFilled ? const Color(0xff004494) : Colors.grey.shade300,
@@ -73,7 +74,10 @@ class PinBoxesRow extends StatelessWidget {
               ? Container(
                   width: 12.h,
                   height: 12.h,
-                  decoration: const BoxDecoration(color: Color(0xff004494), shape: BoxShape.circle),
+                  decoration: const BoxDecoration(
+                    color: Color(0xff004494),
+                    shape: BoxShape.circle,
+                  ),
                 )
               : null,
         );
@@ -93,10 +97,18 @@ class CustomNumKeypad extends StatelessWidget {
   Widget build(BuildContext context) {
     // توزيع الأزرار كـ Grid مع الحفاظ على الأزرار الخاصة (Clear و Backspace)
     final List<String> keys = [
-      "1", "2", "3",
-      "4", "5", "6",
-      "7", "8", "9",
-      "Clear", "0", "backspace"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "Clear",
+      "0",
+      "backspace",
     ];
 
     return GridView.builder(
@@ -120,7 +132,9 @@ class CustomNumKeypad extends StatelessWidget {
             decoration: BoxDecoration(
               color: isSpecialKey ? const Color(0xffE2E5ED) : Colors.white,
               borderRadius: BorderRadius.circular(12.r),
-              border: isSpecialKey ? null : Border.all(color: Colors.grey.shade300),
+              border: isSpecialKey
+                  ? null
+                  : Border.all(color: Colors.grey.shade300),
             ),
             alignment: Alignment.center,
             child: key == "backspace"
@@ -129,7 +143,9 @@ class CustomNumKeypad extends StatelessWidget {
                     key,
                     style: TextStyle(
                       fontSize: isSpecialKey ? 15.sp : 18.sp,
-                      fontWeight: isSpecialKey ? FontWeight.w600 : FontWeight.bold,
+                      fontWeight: isSpecialKey
+                          ? FontWeight.w600
+                          : FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
@@ -140,18 +156,16 @@ class CustomNumKeypad extends StatelessWidget {
   }
 }
 
-
-
-
-
 class CustomVerifyIdentityButton extends StatefulWidget {
   const CustomVerifyIdentityButton({super.key});
 
   @override
-  State<CustomVerifyIdentityButton> createState() => _CustomVerifyIdentityButtonState();
+  State<CustomVerifyIdentityButton> createState() =>
+      _CustomVerifyIdentityButtonState();
 }
 
-class _CustomVerifyIdentityButtonState extends State<CustomVerifyIdentityButton> {
+class _CustomVerifyIdentityButtonState
+    extends State<CustomVerifyIdentityButton> {
   String pinCode = "";
 
   // دالة للتحكم في الضغط على لوحة المفاتيح
@@ -174,6 +188,7 @@ class _CustomVerifyIdentityButtonState extends State<CustomVerifyIdentityButton>
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return // 5️⃣ الزر السفلي الثابت للتأكيد والتسجيل
@@ -182,7 +197,6 @@ class _CustomVerifyIdentityButtonState extends State<CustomVerifyIdentityButton>
       decoration: BoxDecoration(
         color: AppColors.primaryBlue,
         borderRadius: BorderRadius.circular(15.r),
-        
       ),
       child: SizedBox(
         width: double.infinity,

@@ -1,22 +1,31 @@
-import 'dart:io';
-
-import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:path_provider/path_provider.dart';
-import 'package:uni_absence/features/ExamDetails/data/model/exam_student_model.dart';
-import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/list_students_data.dart';
+// Use the domain entity for compatibility with the cubit
+import 'package:uni_absence/features/ExamDetails/domain/entities/exam_record_entity.dart';
+import 'package:uni_absence/core/services/excel_export_service.dart';
 
 class DownloadExportReportFile extends StatelessWidget {
-  const DownloadExportReportFile({super.key});
+  // استقبال البيانات ديناميكياً من الشاشة الأساسية
+  final String examName;
+  final List<ExamRecordEntity> studentsList;
+
+  const DownloadExportReportFile({
+    super.key,
+    required this.examName,
+    required this.studentsList,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: OutlinedButton.icon(
-        onPressed: () {},
-        
+        onPressed: () {
+          // 🔥 هنا قمنا بربط السيرفيس الجديدة وضخ البيانات فوراً عند الضغط
+          ExcelExportService.exportAttendanceToExcel(
+            examName: examName,
+            students: studentsList,
+          );
+        },
         icon: const Icon(Icons.download, size: 20, color: Color(0xFF757575)),
         label: Text(
           'Export Report (Excel/PDF)',
@@ -37,64 +46,3 @@ class DownloadExportReportFile extends StatelessWidget {
     );
   }
 }
-
-// Future<void> exportStudentsToExcel(
-//     List<ExamStudentModel> students) async {
-
-//   var excel = Excel.createExcel();
-
-//   Sheet sheet = excel['Students'];
-
-//   sheet.appendRow([
-//     TextCellValue('Code'),
-//     TextCellValue('Name'),
-//     TextCellValue('Department'),
-//     TextCellValue('Attendance'),
-//   ]);
-
-//   for (var student in students) {
-//     sheet.appendRow([
-//       TextCellValue(student.code),
-//       TextCellValue(student.name),
-//       TextCellValue(student.department),
-//       TextCellValue(student.attended ? 'Attended' : 'Absent'),
-//     ]);
-//   }
-
-//   final bytes = excel.encode();
-
-//   if (bytes != null) {
-//     final dir = await getApplicationDocumentsDirectory();
-
-//     final file = File(
-//       '${dir.path}/students_report.xlsx',
-//     );
-
-//     await file.writeAsBytes(bytes);
-//   }
-// }
-
-// Future<String?> exportStudentsToExcel(List<ExamStudentModel> students) async {
-//   var excel = Excel.createExcel();
-
-//   Sheet sheet = excel['Students'];
-
-//   // ...
-
-//   final bytes = excel.encode();
-
-//   if (bytes != null) {
-//     final dir = await getApplicationDocumentsDirectory();
-
-//     final file = File('${dir.path}/students_report.xlsx');
-
-//     await file.writeAsBytes(bytes);
-
-//     await OpenFile.open(file.path);
-//     await OpenFilex.open(file.path);
-
-//     return file.path;
-//   }
-
-//   return null;
-// }

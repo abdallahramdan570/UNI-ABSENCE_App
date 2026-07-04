@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:uni_absence/core/utils/app_assets.dart';
+// removed unused imports
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
 import 'package:uni_absence/core/widgets/navigation/custom_bottom_nav_bar.dart';
@@ -32,9 +30,8 @@ class ProfileViews extends StatelessWidget {
           ),
         ],
       ),
-      body:  ProfileViewsBody(),
+      body: ProfileViewsBody(),
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 3),
     );
   }
 }
-

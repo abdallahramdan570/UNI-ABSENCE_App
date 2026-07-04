@@ -3,7 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uni_absence/core/routing/app_routes.dart';
 
-void main() {
+import 'package:uni_absence/core/di/dependency_injection.dart' as di;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  di.init();
   runApp(const Uni_AbsenceApp());
 }
 

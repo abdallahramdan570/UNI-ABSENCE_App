@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uni_absence/core/utils/styles.dart';
+// removed unused import
 
 class FinalStatisticsItem extends StatelessWidget {
   const FinalStatisticsItem({
@@ -18,10 +17,8 @@ class FinalStatisticsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        
-    
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal:6),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Container(
             width: double.infinity,
             padding: EdgeInsets.all(16.w),
@@ -30,7 +27,7 @@ class FinalStatisticsItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
               boxShadow: [
                 BoxShadow(
-                color: Colors.grey.withValues(alpha: 0.3),
+                  color: Colors.grey.withValues(alpha: 0.3),
                   spreadRadius: 1,
                   blurRadius: 3,
                   offset: const Offset(1, 3),

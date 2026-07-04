@@ -5,12 +5,14 @@ import 'package:uni_absence/core/utils/styles.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/attendance_stats_section_and_bottum.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/data_list.dart';
+import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/name_subjects.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/student_attendance_card.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/widgets/student_total.dart';
 
 class AttendanceRecordsViewBody extends StatefulWidget {
-  const AttendanceRecordsViewBody({super.key});
+  const AttendanceRecordsViewBody({super.key, required this.examData});
+  final ExamModel examData;
 
   @override
   State<AttendanceRecordsViewBody> createState() => _AttendanceRecordsViewBodyState();
@@ -48,14 +50,14 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 NameSubjects(
-                  subjectName: "Human-Computer Interaction",
-                  sectorNumber: 1,
+                  subjectName: widget.examData.examName,
+                  sectorNumber: widget.examData.sectorId,
                 ),
                 const SizedBox(height: 16),
                 StudentTotal(
-                  sectorNumber: 1,
-                  totalStudents: 50,
-                  subjectName: "Human-Computer Interaction",
+                  sectorNumber: widget.examData.sectorId,
+                  totalStudents: widget.examData.totalStudents,
+                  subjectName: widget.examData.examName,
                 ),
                 const SizedBox(height: 16),
                 

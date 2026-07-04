@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_absence/core/utils/styles.dart';
+// removed unused import
 import 'package:uni_absence/core/widgets/validator/app_validators.dart';
 import 'package:uni_absence/core/widgets/custom_Buttom.dart';
 import 'package:uni_absence/features/login/presentation/views/widgets/Login_Form_section.dart';
@@ -15,7 +15,7 @@ class BoxLoginform extends StatefulWidget {
 }
 
 class _BoxLoginformState extends State<BoxLoginform> {
-final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
@@ -45,20 +45,19 @@ final formKey = GlobalKey<FormState>();
           children: [
             SizedBox(height: 25.h),
             const SecurityBanner(),
-        
+
             SizedBox(height: 20.h),
             LoginFormSection(
-             nextFocusNode: emailFocusNode,
+              nextFocusNode: emailFocusNode,
               label: 'Admin ID / Email',
-        
+
               hintText: "Enter your credentials",
-              
-               
+
               icon: Icons.person_outline,
               validator: AppValidators.validateAdminIdOrEmail,
             ),
             SizedBox(height: 10.h),
-        
+
             LoginFormSection(
               nextFocusNode: passwordFocusNode,
               validator: AppValidators.validatePassword,
@@ -71,12 +70,14 @@ final formKey = GlobalKey<FormState>();
             SizedBox(height: 30.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: CustomButton(text: 'Login', 
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  GoRouter.of(context).push('/dashboard');
-                }
-              }),
+              child: CustomButton(
+                text: 'Login',
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    GoRouter.of(context).push('/dashboard');
+                  }
+                },
+              ),
             ),
           ],
         ),

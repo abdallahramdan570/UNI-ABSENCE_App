@@ -1,9 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:uni_absence/core/utils/app_assets.dart';
-import 'package:uni_absence/core/utils/color.dart';
+// removed unused imports
 import 'package:uni_absence/core/widgets/custom_appbar.dart';
 
 class CustomAppBarDashboard extends StatelessWidget {
@@ -16,9 +12,8 @@ class CustomAppBarDashboard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         CustomAppBar(),
+          CustomAppBar(),
 
-          
           IconButton(
             icon: const Icon(Icons.filter_list_outlined),
             onPressed: () {

@@ -7,8 +7,7 @@ import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/core/utils/app_assets.dart';
 import 'package:uni_absence/core/widgets/custom_Buttom.dart';
 import 'package:uni_absence/core/widgets/logo_items.dart';
-import 'package:uni_absence/features/login/presentation/views/login_view.dart';
-import 'package:uni_absence/features/splash/presentation/views/widgets/divider_items.dart';
+// removed unused imports
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});

@@ -1,14 +1,10 @@
-
-import 'dart:ui';
-
+// removed unused import
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uni_absence/core/utils/app_assets.dart';
 
 class LogoItemwithContainer extends StatelessWidget {
-  const LogoItemwithContainer({
-    super.key,
-  });
+  const LogoItemwithContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +14,7 @@ class LogoItemwithContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24.r),
-        boxShadow: const [
-          BoxShadow(blurRadius: 12, color: Colors.black12),
-        ],
+        boxShadow: const [BoxShadow(blurRadius: 12, color: Colors.black12)],
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),
