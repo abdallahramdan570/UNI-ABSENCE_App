@@ -13,7 +13,7 @@ class SelectDataSection extends StatefulWidget {
 }
 
 class _SelectDataSectionState extends State<SelectDataSection> {
-  DateTime _selectedDate = DateTime(2026, 06, 24); // التاريخ الافتراضي بناءً على الصورة
+  DateTime _selectedDate = DateTime.now(); // التاريخ الافتراضي بناءً على الصورة
 
   @override
   void initState() {

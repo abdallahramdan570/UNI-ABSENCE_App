@@ -11,7 +11,7 @@ class ActiveSessionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 215, 165, 165),
         borderRadius: BorderRadius.circular(18.r),
         boxShadow: [
           BoxShadow(

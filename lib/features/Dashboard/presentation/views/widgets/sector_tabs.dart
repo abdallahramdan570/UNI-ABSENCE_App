@@ -12,7 +12,7 @@ import 'package:uni_absence/features/Dashboard/presentation/cubit/exam_cubit.dar
 import 'package:uni_absence/features/Dashboard/presentation/cubit/exam_state.dart';
 
 class SectorTabsSection extends StatefulWidget {
-  SectorTabsSection({super.key});
+  const SectorTabsSection({super.key});
 
   @override
   State<SectorTabsSection> createState() => _SectorTabsSectionState();
@@ -106,7 +106,18 @@ class _SectorTabsSectionState extends State<SectorTabsSection> {
                     .toList();
 
                 if (activeExams.isEmpty) {
-                  return const Center(child: Text('No exams found for this sector.'));
+                  return const Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 100),
+                        Text(
+                          'No exams found for this sector.',
+                          style: TextStyle(fontSize: 20, color: Colors.red),
+                        ),
+                      ],
+                    ),
+                  );
                 }
 
                 return ListView.builder(
@@ -116,7 +127,9 @@ class _SectorTabsSectionState extends State<SectorTabsSection> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 6.0),
-                      child: ExamCard(examData: activeExams[index] as ExamModel), // Using ExamModel for compatibility with ExamCard
+                      child: ExamCard(
+                        examData: activeExams[index] as ExamModel,
+                      ), // Using ExamModel for compatibility with ExamCard
                     );
                   },
                 );
@@ -125,7 +138,7 @@ class _SectorTabsSectionState extends State<SectorTabsSection> {
             },
           ),
 
-          AttendManuallyButtom(),
+     
           SizedBox(height: 50.h),
         ],
       ),

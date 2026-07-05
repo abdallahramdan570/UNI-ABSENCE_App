@@ -22,6 +22,7 @@ class ExamModel extends ExamEntity {
       examEnd: json['examEnd'],
       // totalStudents: json['totalStudents'],
       // examName: json['examName'],
+      
     );
   }
 

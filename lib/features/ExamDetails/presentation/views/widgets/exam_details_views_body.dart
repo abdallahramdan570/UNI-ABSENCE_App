@@ -24,10 +24,11 @@ class ExamDetailsViewsBody extends StatelessWidget {
         children: [
           ExamReportInfoCard(
             courseName: examData.examName,
-            // Assuming examDate is a String in format YYYY-MM-DD from the API
-            examDate: DateTime.tryParse(examData.examDate) ?? DateTime.now(),
+            examDate: DateTime.parse(examData.examStart),
             examTime: examData.examTime,
+            status: examData.examStatus,
           ),
+
           SizedBox(height: 20.h),
           const ScrollSection(),
           SizedBox(height: 20.h),

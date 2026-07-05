@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,13 +11,43 @@ class ExamReportInfoCard extends StatelessWidget {
     required this.courseName,
     required this.examDate,
     required this.examTime,
+    required this.status,
   });
+  
 
   final String courseName;
   final DateTime examDate;
   final String examTime;
+  final String status;
   @override
   Widget build(BuildContext context) {
+    // تحديد شكل الـ Badge حسب حالة الامتحان
+    late Color backgroundColor;
+    late Color borderColor;
+    late Color textColor;
+    late IconData icon;
+
+    switch (status) {
+      case "Completed":
+        backgroundColor = const Color(0xffE8F9EE);
+        borderColor = const Color(0xffA3E2B9);
+        textColor = const Color(0xff1E7E34);
+        icon = Icons.check_circle;
+        break;
+
+      case "Current":
+        backgroundColor = const Color(0xffFFF4E5);
+        borderColor = const Color(0xffF4B860);
+        textColor = const Color(0xffE67E22);
+        icon = Icons.play_circle_fill;
+        break;
+
+      default:
+        backgroundColor = const Color(0xffE8F0FA);
+        borderColor = const Color(0xffB3CDE8);
+        textColor = const Color(0xff004494);
+        icon = Icons.schedule;
+    }
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
@@ -43,33 +72,41 @@ class ExamReportInfoCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   courseName,
+
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryBlue,
                   ),
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
               ),
+            ],
+          ),
+          SizedBox(height: 4.h),
+          Row(
+            children: [
+              Text(
+                "Full Exam Details",
+                style: TextStyle(color: Colors.grey[900], fontSize: 15.sp),
+              ),
+              const Spacer(),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(
-                  color: const Color(0xffE8F9EE),
+                  color: backgroundColor,
                   borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(color: borderColor),
                 ),
                 child: Row(
                   children: [
-                    const Icon(
-                      Icons.check_circle,
-                      color: Color(0xff1E7E34),
-                      size: 14,
-                    ),
-                    SizedBox(width: 4.w),
-                    const Text(
-                      "Completed",
+                    Icon(icon, color: textColor, size: 14),
+                    SizedBox(width: 6.w),
+                    Text(
+                      status,
                       style: TextStyle(
                         color: Color(0xff1E7E34),
-                        fontSize: 12,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -77,11 +114,6 @@ class ExamReportInfoCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            "Full Exam Details",
-            style: TextStyle(color: Colors.grey[900], fontSize: 15.sp),
           ),
           SizedBox(height: 16.h),
           const Divider(),

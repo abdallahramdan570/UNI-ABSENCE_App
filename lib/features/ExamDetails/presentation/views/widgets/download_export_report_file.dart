@@ -8,11 +8,13 @@ class DownloadExportReportFile extends StatelessWidget {
   // استقبال البيانات ديناميكياً من الشاشة الأساسية
   final String examName;
   final List<ExamRecordEntity> studentsList;
+ 
 
   const DownloadExportReportFile({
     super.key,
     required this.examName,
     required this.studentsList,
+    
   });
 
   @override

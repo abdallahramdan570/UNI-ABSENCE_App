@@ -6,61 +6,97 @@ class TimeExam extends StatelessWidget {
   const TimeExam({
     super.key,
     required this.dataExam,
-    required this.isCompleted,
+    required this.status,
   });
+
+  // الوقت
   final String dataExam;
-  final bool
-  isCompleted; // افتراضياً، يمكنك تعديل هذا بناءً على الحالة الفعلية للامتحان
+
+  // الحالة القادمة من الـ Entity
+  final String status;
+
   @override
   Widget build(BuildContext context) {
+   
+  // هنحدد الألوان والأيقونة حسب حالة الامتحان
+  late Color backgroundColor;
+  late Color borderColor;
+  late Color textColor;
+  late IconData icon;
+
+  switch (status) {
+    case "Completed":
+      backgroundColor = const Color(0xffE8F9EE);
+      borderColor = const Color(0xffA3E2B9);
+      textColor = const Color(0xff1E7E34);
+      icon = Icons.check_circle_outline;
+      break;
+
+    case "Current":
+      backgroundColor = const Color(0xffFFF4E5);
+      borderColor = const Color(0xffF4B860);
+      textColor = const Color(0xffE67E22);
+      icon = Icons.play_circle_outline;
+      break;
+
+    default:
+      backgroundColor = const Color(0xffE8F0FA);
+      borderColor = const Color(0xffB3CDE8);
+      textColor = const Color(0xff004494);
+      icon = Icons.schedule;
+  }
     return Row(
       children: [
-        Icon(Icons.access_time, color: Colors.grey[700], size: 25.sp),
-        SizedBox(width: 5.w),
-        Text(
-          dataExam,
-          maxLines: 2,
-          style: AppStyles.mediumRegular15.copyWith(color: Colors.grey[700]),
+        Icon(
+          Icons.access_time,
+          size: 24.sp,
+          color: Colors.grey,
         ),
-        Spacer(),
 
-        // شارة الحالة (Status Badge)
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-          decoration: BoxDecoration(
-            // لو مكتمل أخضر فاتح، لو قادم أزرق فاتح جداً
-            color: isCompleted
-                ? const Color(0xffE8F9EE)
-                : const Color(0xffE8F0FA),
-            borderRadius: BorderRadius.circular(
-              20.r,
-            ), // حواف دائرية مثل السكرين
-            border: Border.all(
-              color: isCompleted
-                  ? const Color(0xffA3E2B9)
-                  : const Color(0xffB3CDE8),
-              width: 1,
+        SizedBox(width: 6.w),
+
+        Expanded(
+          child: Text(
+            dataExam,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppStyles.mediumRegular15.copyWith(
+              color: Colors.grey[700],
             ),
           ),
+        ),
+
+        Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 12.w,
+            vertical: 6.h,
+          ),
+
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(20.r),
+            border: Border.all(
+              color: borderColor,
+            ),
+          ),
+
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                isCompleted ? Icons.check_circle_outline : Icons.lock_outline,
-                color: isCompleted
-                    ? const Color(0xff1E7E34)
-                    : const Color(0xff004494),
+                icon,
                 size: 16.sp,
+                color: textColor,
               ),
-              SizedBox(width: 4.w),
+
+              SizedBox(width: 5.w),
+
               Text(
-                isCompleted ? 'Completed' : 'Upcoming',
+                status,
                 style: TextStyle(
-                  color: isCompleted
-                      ? const Color(0xff1E7E34)
-                      : const Color(0xff004494),
-                  fontSize: 13.sp,
+                  color: textColor,
                   fontWeight: FontWeight.bold,
+                  fontSize: 13.sp,
                 ),
               ),
             ],

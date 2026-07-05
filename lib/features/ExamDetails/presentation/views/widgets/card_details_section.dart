@@ -4,11 +4,12 @@ import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/exam
 
 class CardDetailsSection extends StatelessWidget {
   const CardDetailsSection({
-    super.key, required this.courseName, required this.examDate, required this.examTime,
+    super.key, required this.courseName, required this.examDate, required this.examTime, required this.status,
   });
   final String courseName ;
     final DateTime examDate ;
   final String examTime ;
+  final String status ;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,8 @@ class CardDetailsSection extends StatelessWidget {
       courseName: courseName,
       examDate: examDate,
       examTime: examTime,
+      status: status,
     );
+
   }
 }

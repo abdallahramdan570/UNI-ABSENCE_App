@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:uni_absence/core/utils/styles.dart';
 import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/dashBord_buttom.dart';
@@ -8,12 +8,14 @@ import 'package:uni_absence/features/Dashboard/presentation/views/widgets/text_a
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/time_exam.dart';
 
 class ExamCard extends StatelessWidget {
-   ExamCard({super.key, required this.examData});
+  const ExamCard({super.key, required this.examData});
+
   final ExamModel examData;
 
   @override
   Widget build(BuildContext context) {
-      bool isCompleted = examData.currentStudents == examData.totalStudents;
+    // ✅ الحالة الصح من الـ Entity
+    final isCompleted = examData.examStatus == "Completed";
 
     return Container(
       width: double.infinity,
@@ -22,38 +24,43 @@ class ExamCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.5),
+            color: Colors.grey.withValues(alpha: 0.3),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
-            TextAndNumberStudent(textTotalStudent: examData.totalStudents, textCurrentStudent: examData.currentStudents),
-           SizedBox(height: 10.h),
+            // 👇 عدد الطلبة
+            TextAndNumberStudent(
+              textTotalStudent: 50,
+              textCurrentStudent: examData.studentsCount,
+            ),
+
+            SizedBox(height: 10.h),
+
+            // 👇 اسم المادة
             Text(
               examData.examName,
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.styleTextBold20.copyWith(color: Colors.black),
             ),
+
             SizedBox(height: 16.h),
 
-            TimeExam(
-              dataExam: examData.examTime,
-              isCompleted: isCompleted,
-            ),
+            // 👇 الوقت + الحالة
+            TimeExam(dataExam: examData.examTime, status: examData.examStatus),
+
             SizedBox(height: 25.h),
+
+            // 👇 زرار الداشبورد
             DashBordButtom(isCompleted: isCompleted, examData: examData),
-
-
           ],
         ),
       ),
