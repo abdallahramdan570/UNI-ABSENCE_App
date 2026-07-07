@@ -8,9 +8,10 @@ class LogoItemLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  //  final double logoSize = 0.4.sw;
     return Container(
-      height: 180.h,
-      width: 180.w,
+   width: 180.w.clamp(120, 180),
+height: 180.w.clamp(120, 180),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.r),

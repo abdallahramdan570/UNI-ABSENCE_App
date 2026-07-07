@@ -1,4 +1,4 @@
-// 
+//
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uni_absence/core/utils/styles.dart';
@@ -15,7 +15,8 @@ class AttendanceRecordsViewBody extends StatefulWidget {
   final ExamModel examData;
 
   @override
-  State<AttendanceRecordsViewBody> createState() => _AttendanceRecordsViewBodyState();
+  State<AttendanceRecordsViewBody> createState() =>
+      _AttendanceRecordsViewBodyState();
 }
 
 class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
@@ -27,7 +28,7 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
     // ─── منطق البحث والتصفية الذكي (بالاسم، الـ ID، والقسم) ───
     final filteredStudents = studentsList.where((student) {
       final query = searchQuery.toLowerCase().trim();
-      
+
       // لو خانة البحث فارغة، اعرض كل الطلاب بدون تصفية
       if (query.isEmpty) return true;
 
@@ -45,7 +46,10 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
         // 1️⃣ الجزء العلوي القابل للتمرير (العناوين + خانة البحث المربوطة بالـ State + الكروت)
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10.0,
+              vertical: 16.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,11 +60,11 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
                 const SizedBox(height: 16),
                 StudentTotal(
                   sectorNumber: widget.examData.sectorId,
-                  totalStudents: widget.examData.totalStudents,
+                  totalStudents: widget.examData.studentTotals,
                   subjectName: widget.examData.examName,
                 ),
                 const SizedBox(height: 16),
-                
+
                 // 📝 تعديل شريط البحث: نمرر له دالة onChanged لتحديث الـ State فوراً
                 CustomSearchTextField(
                   onChanged: (value) {
@@ -78,16 +82,21 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
                           padding: EdgeInsets.symmetric(vertical: 40.h),
                           child: Text(
                             "No students found!",
-                            style: AppStyles.styleTextBold20.copyWith(color: Colors.grey),
+                            style: AppStyles.styleTextBold20.copyWith(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       )
                     : ListView.builder(
                         shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(), // السكرول الخارجي يتولى الحركة
+                        physics:
+                            const NeverScrollableScrollPhysics(), // السكرول الخارجي يتولى الحركة
                         itemCount: filteredStudents.length,
                         itemBuilder: (context, index) {
-                          return StudentAttendanceCard(student: filteredStudents[index]);
+                          return StudentAttendanceCard(
+                            student: filteredStudents[index],
+                          );
                         },
                       ),
               ],
@@ -95,7 +104,7 @@ class _AttendanceRecordsViewBodyState extends State<AttendanceRecordsViewBody> {
           ),
         ),
         // 2️⃣ الجزء السفلي الثابت (الإحصائيات + زر المراجعة والتقديم)
-         AttendanceStatsSectionAndBottum(),
+        AttendanceStatsSectionAndBottum(examData: widget.examData),
       ],
     );
   }

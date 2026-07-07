@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uni_absence/features/History/presentation/views/widgets/course_attendance_model.dart';
 // removed unused import
-import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
+import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart' hide CourseAttendanceModel;
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/locked_subject_item.dart';
 
 class SubmissionSummaryCard extends StatelessWidget {

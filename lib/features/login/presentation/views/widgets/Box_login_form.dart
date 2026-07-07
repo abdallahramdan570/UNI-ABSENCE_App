@@ -29,11 +29,7 @@ class _BoxLoginformState extends State<BoxLoginform> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 309,
-      width: MediaQuery.of(context).size.width * 0.93,
-      // height: 338,
-      height: MediaQuery.of(context).size.height * 0.55,
-
+      width: 0.9.sw.clamp(300, 400),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         color: Colors.white,
@@ -42,6 +38,7 @@ class _BoxLoginformState extends State<BoxLoginform> {
       child: Form(
         key: formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: 25.h),
             const SecurityBanner(),
@@ -51,7 +48,7 @@ class _BoxLoginformState extends State<BoxLoginform> {
               nextFocusNode: emailFocusNode,
               label: 'Admin ID / Email',
 
-              hintText: "Enter your credentials",
+              hintText: "Enter your Admin ID or Email",
 
               icon: Icons.person_outline,
               validator: AppValidators.validateAdminIdOrEmail,
@@ -69,7 +66,7 @@ class _BoxLoginformState extends State<BoxLoginform> {
             ),
             SizedBox(height: 30.h),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              padding: EdgeInsets.symmetric(horizontal: 14.w),
               child: CustomButton(
                 text: 'Login',
                 onPressed: () {

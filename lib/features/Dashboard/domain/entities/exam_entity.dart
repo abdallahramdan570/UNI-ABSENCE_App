@@ -23,7 +23,7 @@ class ExamEntity extends Equatable {
   // عدد الطلبة
   final int studentsCount;
 
-final int totalStudents;
+final int studentTotals;
 final int status;
   final int currentStudents;
   const ExamEntity({
@@ -34,7 +34,7 @@ final int status;
     required this.examStart,
     required this.examEnd,
     required this.studentsCount,
-    required this.totalStudents,
+    required this.studentTotals,
     required this.currentStudents,
     required this.status,
   });
@@ -100,5 +100,8 @@ String get examStatus {
         examStart,
         examEnd,
         studentsCount,
+        studentTotals,
+        currentStudents,
+        status,
       ];
 }

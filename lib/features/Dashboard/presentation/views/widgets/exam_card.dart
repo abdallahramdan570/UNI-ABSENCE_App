@@ -38,7 +38,7 @@ class ExamCard extends StatelessWidget {
           children: [
             // 👇 عدد الطلبة
             TextAndNumberStudent(
-              textTotalStudent: 50,
+              textTotalStudent: examData.studentTotals,
               textCurrentStudent: examData.studentsCount,
             ),
 

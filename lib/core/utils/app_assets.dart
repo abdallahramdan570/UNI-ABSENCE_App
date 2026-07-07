@@ -18,6 +18,10 @@ class Assets {
   /// assets/images/logo.png
   static const String assetsImagesLogo = "assets/images/logo.png";
 
+  /// Assets for assetsImagesProfileFace
+  /// assets/images/Profile_Face.jpg
+  static const String assetsImagesProfileFace = "assets/images/Profile_Face.jpg";
+
   /// Assets for assetsImagesStudentPortrait
   /// assets/images/Student_Portrait.svg
   static const String assetsImagesStudentPortrait = "assets/images/Student_Portrait.svg";

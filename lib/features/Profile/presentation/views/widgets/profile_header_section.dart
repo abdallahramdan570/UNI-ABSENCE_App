@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uni_absence/core/utils/app_assets.dart';
 
 class ProfileHeaderSection extends StatelessWidget {
   const ProfileHeaderSection({super.key});
@@ -18,9 +19,7 @@ class ProfileHeaderSection extends StatelessWidget {
               radius: 54.r,
               backgroundColor: Colors.grey.shade300,
               // يفضل استبدالها بـ Asset Image الخاص بك لاحقاً
-              backgroundImage: const NetworkImage(
-                'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200',
-              ),
+              backgroundImage: AssetImage(Assets.assetsImagesProfileFace),
             ),
             Positioned(
               right: 2.w,
@@ -42,7 +41,7 @@ class ProfileHeaderSection extends StatelessWidget {
         ),
         SizedBox(height: 12.h),
         Text(
-          'Dr. Ahmed Mansour',
+          'Dr. Abdallah Ramadan',
           style: TextStyle(
             fontSize: 22.sp,
             fontWeight: FontWeight.bold,

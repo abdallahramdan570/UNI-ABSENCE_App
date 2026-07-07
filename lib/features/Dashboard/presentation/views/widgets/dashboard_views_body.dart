@@ -18,6 +18,7 @@ class DashboardViewsBody extends StatelessWidget {
 
           SectorTabsSection(),
           SizedBox(height: 20.h),
+          
         ],
       ),
     );

@@ -1,17 +1,29 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:uni_absence/core/routing/app_routes.dart';
-
 import 'package:uni_absence/core/di/dependency_injection.dart' as di;
+import 'package:uni_absence/core/routing/app_routes.dart';
+import 'package:uni_absence/core/utils/function/setup_service_locator.dart';
+import 'package:uni_absence/features/Settings/presentation/cubit/app_flobal_state.dart';
+import 'package:uni_absence/features/Settings/presentation/cubit/app_global_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  di.init();
-  runApp(const Uni_AbsenceApp());
+  di.init(); // تأكد أن di.init() يقوم بعمل registerLazySingleton لـ AppGlobalCubit
+  runApp(
+    BlocProvider(
+      create: (context) => di.sl<AppGlobalCubit>(),
+      child: Uni_AbsenceApp(),
+      // DevicePreview(
+      //   enabled:
+      //       true, // قم بتغيير هذا إلى true إذا كنت تريد تفعيل Device Preview
+      //   builder: (context) => const Uni_AbsenceApp(),
+      // ),
+    ),
+  );
 }
 
-// ignore: camel_case_types
 class Uni_AbsenceApp extends StatelessWidget {
   const Uni_AbsenceApp({super.key});
 
@@ -21,17 +33,25 @@ class Uni_AbsenceApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-
       builder: (context, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: AppRoutes.routes,
-
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            scaffoldBackgroundColor: const Color(0xFFF5F5F5),
-            textTheme: GoogleFonts.montserratTextTheme(),
-          ),
+        // الربط بالـ BlocBuilder هنا لتغيير الثيم عالمياً
+        return BlocBuilder<AppGlobalCubit, SettingsState>(
+          builder: (context, state) {
+            final cubit = context.read<AppGlobalCubit>();
+            return MaterialApp.router(
+              locale: DevicePreview.locale(
+                context,
+              ), // استخدم locale من DevicePreview
+              builder: DevicePreview
+                  .appBuilder, // استخدم appBuilder من DevicePreview
+              debugShowCheckedModeBanner: false,
+              routerConfig: AppRoutes.routes,
+              // هنا التحكم العالمي في التطبيق كله
+              themeMode: cubit.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              theme: ThemeData.light(),
+              darkTheme: ThemeData.dark(),
+            );
+          },
         );
       },
     );

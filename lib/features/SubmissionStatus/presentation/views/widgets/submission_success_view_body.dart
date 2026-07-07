@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_absence/core/routing/app_routes_name.dart';
-import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
+import 'package:uni_absence/features/History/presentation/views/widgets/course_attendance_model.dart';
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/submission_summary_card.dart';
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/success_header_section.dart';
 
@@ -41,13 +41,11 @@ class SubmissionSuccessViewBody extends StatelessWidget {
                 backgroundColor: const Color(0xff004494),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
-                ), 
+                ),
                 elevation: 0,
               ),
               onPressed: () {
-                GoRouter.of(
-                  context,
-                ).go(AppPagesName.kdashboardView); 
+                GoRouter.of(context).go(AppPagesName.kdashboardView);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

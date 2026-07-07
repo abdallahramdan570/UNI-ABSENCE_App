@@ -9,3 +9,4 @@ class SettingsViews extends StatelessWidget {
     return const Scaffold(body: SettingsViewsBody());
   }
 }
+

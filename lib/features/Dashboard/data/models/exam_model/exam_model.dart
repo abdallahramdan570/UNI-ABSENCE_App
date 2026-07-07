@@ -7,7 +7,8 @@ class ExamModel extends ExamEntity {
     required super.name,
     required super.examDate,
     required super.examStart,
-    required super.examEnd,
+    required super.examEnd, 
+    required totalStudents,
     
     
   });
@@ -20,7 +21,7 @@ class ExamModel extends ExamEntity {
       examDate: json['examDate'],
       examStart: json['examStart'],
       examEnd: json['examEnd'],
-      // totalStudents: json['totalStudents'],
+       totalStudents: json['totalStudents'],
       // examName: json['examName'],
       
     );

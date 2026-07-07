@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/exam_details_views_body.dart';
 
@@ -9,7 +8,7 @@ import 'package:uni_absence/features/ExamDetails/presentation/cubit/exam_record_
 
 class ExamDetailsViews extends StatelessWidget {
   const ExamDetailsViews({super.key, required this.examData});
-  
+
   final ExamModel examData;
 
   @override
@@ -17,10 +16,15 @@ class ExamDetailsViews extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl<ExamRecordCubit>()..fetchExamRecords(examData.id),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Exam Details')),
+        appBar: AppBar(
+          backgroundColor:
+              Theme.of(context).appBarTheme.backgroundColor ??
+              Theme.of(context).scaffoldBackgroundColor,
+          elevation: 0,
+          title: const Text('Exam Details'),
+        ),
         body: ExamDetailsViewsBody(examData: examData),
       ),
     );
   }
 }
-

@@ -1,11 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/attendance_records_views.dart';
+import 'package:uni_absence/features/Dashboard/domain/entities/exam_entities.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/dashboard_views.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/exam-details_veiws.dart';
 import 'package:uni_absence/features/History/presentation/views/history_views.dart';
-import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
+import 'package:uni_absence/features/History/presentation/views/widgets/course_attendance_model.dart';
 import 'package:uni_absence/features/Profile/presentation/views/profile_views.dart';
+import 'package:uni_absence/features/Settings/presentation/views/settings_views.dart';
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/submission_status_view.dart';
 import 'package:uni_absence/features/VerifyIdentity/presentation/views/verify_identity_view.dart';
 import 'package:uni_absence/features/login/presentation/views/login_view.dart';
@@ -22,45 +24,54 @@ abstract class AppRoutes {
         builder: (context, state) => const LoginView(),
       ),
 
-      GoRoute(path:AppPagesName.kdashboardView ,
+      GoRoute(
+        path: AppPagesName.kdashboardView,
         builder: (context, state) => const DashboardViews(),
-        ),
-    // GoRoute(path:AppPagesName.kattendanceView ,
-    //     builder: (context, state) {
-    //       final examData = state.extra as ExamModel;
-    //       return AttendanceRecordsViews(examData: examData);
-    //     },
-    //     ),
-        GoRoute(path:AppPagesName.khistoryView ,
-        builder: (context, state) => const HistoryViews(),
+      ),
+     
+  GoRoute(
+  path: AppPagesName.khistoryView,
+  builder: (context, state) {
 
-        ),
-GoRoute(path:AppPagesName.kprofileView ,
+    final exam = state.extra as ExamEntity;
+
+    return HistoryViews(
+      exam: exam,
+    );
+  },
+),
+      GoRoute(
+        path: AppPagesName.kprofileView,
         builder: (context, state) => const ProfileViews(),
-        ),
-    GoRoute(path:AppPagesName.kexamDetailsView ,
+      ),
+      GoRoute(
+        path: AppPagesName.ksettingsView,
+        builder: (context, state) => const SettingsViews(),
+      ),
+      GoRoute(
+        path: AppPagesName.kexamDetailsView,
         builder: (context, state) {
           final examData = state.extra as ExamModel;
           return ExamDetailsViews(examData: examData);
         },
-        ),
+      ),
       GoRoute(
-  path: AppPagesName.ksubmissionStatusView,
-  builder: (context, state) {
+        path: AppPagesName.ksubmissionStatusView,
+        builder: (context, state) {
+          final course = state.extra as CourseAttendanceModel;
 
-  final course =
-    state.extra as CourseAttendanceModel;
+          return SubmissionSuccessView(course: course);
+        },
+      ),
+      GoRoute( 
+        path: AppPagesName.ksettingsView,
+        builder: (context, state) => const SettingsViews(),
+      ),
 
-    return SubmissionSuccessView(
-      course: course,
-    );
-  },
-),
-
-GoRoute(
-  path: AppPagesName.kverifyIdentityView,
-  builder: (context, state) => const VerifyIdentityView(),
-),
+      GoRoute(
+        path: AppPagesName.kverifyIdentityView,
+        builder: (context, state) => const VerifyIdentityView(),
+      ),
     ],
   );
 }
