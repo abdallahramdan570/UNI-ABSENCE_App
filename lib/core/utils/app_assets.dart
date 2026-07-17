@@ -10,10 +10,6 @@ class Assets {
   /// assets/images/Icon_no_accass.svg
   static const String assetsImagesIconNoAccass = "assets/images/Icon_no_accass.svg";
 
-  /// Assets for assetsImagesImgesProfile
-  /// assets/images/imges_profile.svg
-  static const String assetsImagesImgesProfile = "assets/images/imges_profile.svg";
-
   /// Assets for assetsImagesLogo
   /// assets/images/logo.png
   static const String assetsImagesLogo = "assets/images/logo.png";
@@ -21,6 +17,10 @@ class Assets {
   /// Assets for assetsImagesProfileFace
   /// assets/images/Profile_Face.jpg
   static const String assetsImagesProfileFace = "assets/images/Profile_Face.jpg";
+
+  /// Assets for assetsImagesProfileId
+  /// assets/images/profile_Id.jpg
+  static const String assetsImagesProfileId = "assets/images/profile_Id.jpg";
 
   /// Assets for assetsImagesStudentPortrait
   /// assets/images/Student_Portrait.svg

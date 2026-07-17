@@ -7,13 +7,17 @@ import 'package:uni_absence/features/ExamDetails/data/model/exam_student_model.d
 import 'package:uni_absence/features/History/presentation/views/history_views.dart';
 import 'package:uni_absence/features/History/presentation/views/widgets/review_card.dart';
 
+import '../../../../Dashboard/data/models/exam_model.dart';
+
 class HistoryBodyViews extends StatelessWidget {
   const HistoryBodyViews({
     super.key,
     required this.exam,
+    
   });
 
   final CourseAttendanceModel exam;
+   
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,7 @@ class HistoryBodyViews extends StatelessWidget {
 
             ReviewCard(
               exam: exam,
+         
             ),
 
             const SizedBox(height: 19),
@@ -74,9 +79,9 @@ class HistoryBodyViews extends StatelessWidget {
             CustomButton(
               text: 'Edit Sheet',
               onPressed: () {
-                GoRouter.of(context).push(
-                  AppPagesName.kattendanceView,
-                );
+             GoRouter.of(context).push(
+                  AppPagesName.kverifyIdentityView,
+);
               },
               backgroundColor: Colors.grey,
             ),

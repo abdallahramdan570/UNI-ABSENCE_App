@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/features/AttendanceRecords/presentation/views/attendance_records_views.dart';
+
 import 'package:uni_absence/features/Dashboard/domain/entities/exam_entities.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/dashboard_views.dart';
 import 'package:uni_absence/features/ExamDetails/presentation/exam-details_veiws.dart';
@@ -13,7 +14,8 @@ import 'package:uni_absence/features/VerifyIdentity/presentation/views/verify_id
 import 'package:uni_absence/features/login/presentation/views/login_view.dart';
 import 'package:uni_absence/features/splash/presentation/views/splash_views.dart';
 
-import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
+import '../../features/Dashboard/data/models/exam_model.dart';
+
 
 abstract class AppRoutes {
   static final GoRouter routes = GoRouter(
@@ -28,18 +30,15 @@ abstract class AppRoutes {
         path: AppPagesName.kdashboardView,
         builder: (context, state) => const DashboardViews(),
       ),
-     
-  GoRoute(
-  path: AppPagesName.khistoryView,
-  builder: (context, state) {
 
-    final exam = state.extra as ExamEntity;
-
-    return HistoryViews(
-      exam: exam,
-    );
-  },
-),
+      GoRoute(
+        path: AppPagesName.khistoryView,
+        builder: (context, state) {
+          return HistoryViews(
+         
+          );
+        },
+      ),
       GoRoute(
         path: AppPagesName.kprofileView,
         builder: (context, state) => const ProfileViews(),
@@ -58,14 +57,22 @@ abstract class AppRoutes {
       GoRoute(
         path: AppPagesName.ksubmissionStatusView,
         builder: (context, state) {
-          final course = state.extra as CourseAttendanceModel;
+        
 
-          return SubmissionSuccessView(course: course);
+          return SubmissionSuccessView();
         },
       ),
-      GoRoute( 
+      GoRoute(
         path: AppPagesName.ksettingsView,
         builder: (context, state) => const SettingsViews(),
+      ),
+      GoRoute(
+        path: AppPagesName.kattendanceView,
+        builder: (context, state) {
+return AttendanceRecordsViews(
+            examData: state.extra as ExamModel,
+          );
+        },
       ),
 
       GoRoute(

@@ -14,12 +14,7 @@ void main() async {
   runApp(
     BlocProvider(
       create: (context) => di.sl<AppGlobalCubit>(),
-      child: Uni_AbsenceApp(),
-      // DevicePreview(
-      //   enabled:
-      //       true, // قم بتغيير هذا إلى true إذا كنت تريد تفعيل Device Preview
-      //   builder: (context) => const Uni_AbsenceApp(),
-      // ),
+      child: const Uni_AbsenceApp(),
     ),
   );
 }
@@ -39,11 +34,6 @@ class Uni_AbsenceApp extends StatelessWidget {
           builder: (context, state) {
             final cubit = context.read<AppGlobalCubit>();
             return MaterialApp.router(
-              locale: DevicePreview.locale(
-                context,
-              ), // استخدم locale من DevicePreview
-              builder: DevicePreview
-                  .appBuilder, // استخدم appBuilder من DevicePreview
               debugShowCheckedModeBanner: false,
               routerConfig: AppRoutes.routes,
               // هنا التحكم العالمي في التطبيق كله

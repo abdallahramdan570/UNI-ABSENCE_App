@@ -7,17 +7,18 @@ import 'package:uni_absence/features/History/presentation/views/widgets/history_
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/locked_subject_item.dart';
 
 class SubmissionSummaryCard extends StatelessWidget {
-  const SubmissionSummaryCard({super.key, required this.course});
+  const SubmissionSummaryCard({super.key,  this.course});
 
-  final CourseAttendanceModel course;
+  final CourseAttendanceModel? course;
 
   @override
   Widget build(BuildContext context) {
-    final totalStudents = course.students.length;
+  
 
-    final absentStudents = course.students.where((s) => !s.attended).toList();
+    final absentStudents = 4;
 
-    final presentStudents = course.students.where((s) => s.attended).length;
+    final presentStudents =6 ;
+      final totalStudents =  absentStudents + presentStudents;
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
@@ -103,7 +104,7 @@ class SubmissionSummaryCard extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                absentStudents.length.toString(),
+                absentStudents.toString(),
                 style: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
@@ -115,11 +116,11 @@ class SubmissionSummaryCard extends StatelessWidget {
           SizedBox(height: 20.h),
 
           LockedSubjectItem(
-            subjectName: course.courseName,
-            absentStudents: absentStudents.isEmpty
+            subjectName:  'Abdallah Ramadan',
+            absentStudents:  absentStudents == 0
                 ? "No absent students"
-                : absentStudents.map((student) => student.name).join(', '),
-            lockTime: course.lockTime ?? '',
+                : absentStudents.toString(),
+            lockTime: course?.lockTime ?? '',
           ),
         ],
       ),

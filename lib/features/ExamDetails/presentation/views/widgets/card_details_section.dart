@@ -14,6 +14,7 @@ class CardDetailsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExamReportInfoCard(
+
       courseName: courseName,
       examDate: examDate,
       examTime: examTime,

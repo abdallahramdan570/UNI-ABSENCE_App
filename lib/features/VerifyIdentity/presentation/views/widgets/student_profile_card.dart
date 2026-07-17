@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -28,9 +27,8 @@ class StudentProfileCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
-                  child: SvgPicture.asset(
-                    Assets
-                        .assetsImagesStudentPortrait, // ممرر المسار النصي مباشرة هنا
+                  child: Image.asset(
+                    Assets.assetsImagesProfileId,
                     width: 75.h,
                     height: 75.h,
                     fit: BoxFit.cover,
@@ -47,7 +45,7 @@ class StudentProfileCard extends StatelessWidget {
                     ),
                     child: SvgPicture.asset(
                       Assets.assetsImagesIconNoAccass,
-      
+
                       width: 12,
                       height: 12,
                     ),
@@ -62,7 +60,7 @@ class StudentProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Yassin Ibrahim Khalil',
+                    ' Abdallah Ramadan Othman',
                     style: TextStyle(
                       color: const Color(0xff004494),
                       fontWeight: FontWeight.bold,
@@ -71,7 +69,7 @@ class StudentProfileCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2.h),
                   Text(
-                    'ID: 2024-ADM-8821',
+                    'ID: 221236',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
@@ -80,7 +78,7 @@ class StudentProfileCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2.h),
                   Text(
-                    'Computer Science Dept',
+                    'Computer Science Dept:IS',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 13.sp,

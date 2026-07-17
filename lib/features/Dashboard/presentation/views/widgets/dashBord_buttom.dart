@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:uni_absence/core/routing/app_routes_name.dart';
 import 'package:uni_absence/core/utils/color.dart';
 import 'package:uni_absence/core/utils/styles.dart';
-
 import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
+import 'package:uni_absence/features/Dashboard/presentation/views/widgets/text_exam.dart';  
 
 class DashBordButtom extends StatelessWidget {
   const DashBordButtom({

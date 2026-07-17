@@ -37,18 +37,26 @@ class CustomBottomNavBar extends StatelessWidget {
               route: AppPagesName.ksettingsView,
               isSelected: currentIndex == 1,
             ),
-            // CustomNavItem(
-            //   icon: Icons.date_range,
-            //   title: 'Exam Details',
-            //   route: AppPagesName.kexamDetailsView,
-            //   isSelected: currentIndex == 2,
-            // ),
+            CustomNavItem(
+              icon: Icons.history,
+              title: 'History',
+              route: AppPagesName.khistoryView,
+              isSelected: currentIndex == 2,
+            ),
             CustomNavItem(
               icon: Icons.person_outline,
               title: 'Profile',
               route: AppPagesName.kprofileView,
-              isSelected: currentIndex == 2,
+              isSelected: currentIndex == 4,
             ),
+        
+        // CustomNavItem(
+        //       icon: Icons.assignment_outlined,
+        //       title: 'attendance',
+        //       route: AppPagesName.kattendanceView,
+        //       isSelected: currentIndex == 3,
+        //     ),
+            
           ],
         ),
       ),

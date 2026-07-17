@@ -12,10 +12,12 @@ import 'package:uni_absence/features/ExamDetails/presentation/views/widgets/list
 import 'package:uni_absence/features/History/presentation/views/widgets/history_body_views.dart';
 import 'package:uni_absence/features/History/presentation/views/widgets/review_card.dart';
 
-class HistoryViews extends StatelessWidget {
-  const HistoryViews({super.key, required this.exam});
+import '../../../Dashboard/data/models/exam_model.dart';
 
-  final ExamEntity exam;
+class HistoryViews extends StatelessWidget {
+  const HistoryViews({super.key, });
+
+
   @override
   Widget build(BuildContext context) {
     final course = CourseAttendanceModel(
@@ -45,7 +47,7 @@ class HistoryViews extends StatelessWidget {
           ),
         ),
       ),
-      body: HistoryBodyViews(exam: course),
+      body: HistoryBodyViews(exam: course,),
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 2),
     );
   }

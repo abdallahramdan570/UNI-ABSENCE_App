@@ -5,8 +5,8 @@ import 'package:uni_absence/features/History/presentation/views/widgets/history_
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/submission_success_view_body.dart';
 
 class SubmissionSuccessView extends StatelessWidget {
-  const SubmissionSuccessView({super.key, required this.course});
-  final CourseAttendanceModel course;
+  const SubmissionSuccessView({super.key,  this.course});
+  final CourseAttendanceModel? course;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class SubmissionSuccessView extends StatelessWidget {
           ),
         ],
       ),
-      body: SubmissionSuccessViewBody(course: course),
+      body: SubmissionSuccessViewBody(),
     );
   }
 }

@@ -8,8 +8,8 @@ import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets
 import 'package:uni_absence/features/SubmissionStatus/presentation/views/widgets/success_header_section.dart';
 
 class SubmissionSuccessViewBody extends StatelessWidget {
-  const SubmissionSuccessViewBody({super.key, required this.course});
-  final CourseAttendanceModel course;
+  const SubmissionSuccessViewBody({super.key,  this.course});
+  final CourseAttendanceModel? course;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,11 +20,13 @@ class SubmissionSuccessViewBody extends StatelessWidget {
             child: Column(
               children: [
                 // 1️⃣ الجزء العلوي: أيقونة النجاح الدائرية المتداخلة
-                SuccessHeaderSection(section: course.section),
+                SuccessHeaderSection(section: course?.section ?? "Section A"),
                 SizedBox(height: 24.h),
 
                 // 2️⃣ الجزء الأوسط: كارد ملخص الإرسال الكامل
-                SubmissionSummaryCard(course: course),
+                SubmissionSummaryCard(
+                  course: course,
+                ),
               ],
             ),
           ),

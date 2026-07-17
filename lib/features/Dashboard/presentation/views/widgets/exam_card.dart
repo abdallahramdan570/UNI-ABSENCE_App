@@ -6,7 +6,7 @@ import 'package:uni_absence/features/Dashboard/data/models/exam_model.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/dashBord_buttom.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/text_and_number_student.dart';
 import 'package:uni_absence/features/Dashboard/presentation/views/widgets/time_exam.dart';
-
+import 'package:uni_absence/features/Dashboard/presentation/views/widgets/text_exam.dart';
 class ExamCard extends StatelessWidget {
   const ExamCard({super.key, required this.examData});
 
@@ -60,7 +60,7 @@ class ExamCard extends StatelessWidget {
             SizedBox(height: 25.h),
 
             // 👇 زرار الداشبورد
-            DashBordButtom(isCompleted: isCompleted, examData: examData),
+            DashBordButtom(isCompleted: isCompleted, examData: examData ),
           ],
         ),
       ),
